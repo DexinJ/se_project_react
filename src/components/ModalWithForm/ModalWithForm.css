@@ -1,0 +1,118 @@
+p {
+  margin: 0;
+  padding: 0;
+}
+
+.modal {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal_opened {
+  visibility: visible;
+  opacity: 1;
+}
+
+.modal__container {
+  position: relative;
+  background-color: white;
+  padding: 28px;
+  border-radius: 20px;
+  max-width: 440px;
+  width: 100%;
+}
+
+.modal__close {
+  border: none;
+  padding: 0;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.modal__close-image {
+  background-color: transparent;
+}
+
+.modal__close:hover {
+  opacity: 0.6;
+  cursor: pointer;
+  transition: opacity linear 0.1s;
+}
+.modal__heading {
+  margin: 0;
+}
+
+.modal__text {
+  font-family: "CabinetGrotesk-Bold";
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.modal__button {
+  margin: 32px 0 0;
+  border: none;
+  background-color: #000;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.modal__button:hover:enabled {
+  opacity: 0.6;
+  transition: opacity linear 0.1s;
+}
+
+.modal__button_disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.modal__form {
+  margin: 24px 0 0;
+  display: flex;
+  flex-direction: column;
+}
+.modal__input {
+  padding: 10px 0 0;
+  width: 100%;
+  border: none;
+  height: 24px;
+  border-bottom: 1px solid rgba(0, 0, 0, 1);
+}
+.modal__input:focus {
+  outline: none;
+}
+.modal__field {
+  padding-bottom: 24px;
+  margin: 0;
+  width: 100%;
+  display: inline-block;
+}
+.modal__choice {
+  margin-top: 8px;
+}
+.modal__choice:first-child {
+  margin-top: 12px;
+}
+
+.modal__point {
+  accent-color: #000;
+}
+
+.modal__select {
+  padding-left: 11px;
+}
