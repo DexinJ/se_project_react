@@ -1,14 +1,15 @@
 import "./ItemCard.css";
 function ItemCard({ item, onClick }) {
+  const handleImageClick = () => {
+    onClick(item);
+  };
   return (
     <div className="item">
       <img
         src={item.link}
         className="item__image"
         alt={item.name}
-        onClick={() => {
-          onClick(item);
-        }}
+        onClick={handleImageClick}
       />
       <div className="item__info">{item.name}</div>
     </div>
