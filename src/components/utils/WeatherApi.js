@@ -1,11 +1,5 @@
-//791e0eb33eb84e901df9e55dfa0aa052
-//https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${APIkey}
+import { latitude, longitude, APIkey } from "./constants";
 
-import { useMemo } from "react";
-
-const latitude = 34.05;
-const longitude = -118.24;
-const APIkey = "791e0eb33eb84e901df9e55dfa0aa052";
 const getForecastWeather = () => {
   const weatherApi = fetch(
     `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${APIkey}`

@@ -5,8 +5,8 @@ import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import ItemModal from "../ItemModal/ItemModal";
-import { useEffect, useMemo, useState } from "react";
-import { getForecastWeather, parseWeatherData } from "../util/WeatherApi";
+import { useEffect, useState } from "react";
+import { getForecastWeather, parseWeatherData } from "../utils/WeatherApi";
 const defaultClothingItems = [
   {
     _id: 0,
