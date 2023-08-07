@@ -1,12 +1,12 @@
 import "./App.css";
 import "../../vendor/fonts.css";
-import Header from "../Header/Header";
-import Main from "../Main/Main";
-import Footer from "../Footer/Footer";
-import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import ItemModal from "../ItemModal/ItemModal";
+import Header from "./components/Header/Header";
+import Main from "./components/Main/Main";
+import Footer from "./components/Footer/Footer";
+import ModalWithForm from "./components/ModalWithForm/ModalWithForm";
+import ItemModal from "./components/ItemModal/ItemModal";
 import { useEffect, useState } from "react";
-import { getForecastWeather, parseWeatherData } from "../utils/WeatherApi";
+import { getForecastWeather, parseWeatherData } from "./utils/WeatherApi";
 const defaultClothingItems = [
   {
     _id: 0,
