@@ -11,7 +11,7 @@ function ClothesSection({ clothing, onClick, onSelectCard }) {
       </div>
       <div className="profile__gallery">
         {clothing.map((item) => {
-          return <ItemCard item={item} onClick={onSelectCard} key={item._id} />;
+          return <ItemCard item={item} onClick={onSelectCard} key={item.id} />;
         })}
       </div>
     </div>

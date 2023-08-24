@@ -56,7 +56,7 @@ function App() {
   };
 
   const handleCardDelete = () => {
-    deleteItem(selectedCard._id)
+    deleteItem(selectedCard.id)
       .then((data) => {
         console.log(data);
         getItems()

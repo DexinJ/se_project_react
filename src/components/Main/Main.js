@@ -47,7 +47,7 @@ function Main({ day, type, defaultClothing, C, F, onSelectCard }) {
         <div className="card-section__gallery">
           {filteredCards.map((item) => {
             return (
-              <ItemCard item={item} onClick={onSelectCard} key={item._id} />
+              <ItemCard item={item} onClick={onSelectCard} key={item.id} />
             );
           })}
         </div>
