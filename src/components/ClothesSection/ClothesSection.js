@@ -1,6 +1,6 @@
 import React from "react";
 import ItemCard from "../ItemCard/ItemCard";
-function ClothSection({ clothing, onClick, onSelectCard }) {
+function ClothesSection({ clothing, onClick, onSelectCard }) {
   return (
     <div className="profile__card-section" id="cardSection">
       <div className="profile__card-top">
@@ -18,4 +18,4 @@ function ClothSection({ clothing, onClick, onSelectCard }) {
   );
 }
 
-export default ClothSection;
+export default ClothesSection;

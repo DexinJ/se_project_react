@@ -1,11 +1,11 @@
 import "./Profile.css";
-import ClothSection from "../ClothesSection/ClothesSection";
+import ClothesSection from "../ClothesSection/ClothesSection";
 import SideBar from "../SideBar/SideBar";
 function Profile({ onClick, defaultClothing, onSelectCard }) {
   return (
     <div className="profile">
       <SideBar src={"/images/Avatar.svg"} name={"Terrence Tegegne"} />
-      <ClothSection
+      <ClothesSection
         clothing={defaultClothing}
         onClick={onClick}
         onSelectCard={onSelectCard}
