@@ -17,8 +17,8 @@ const processServerResopnse = (res) => {
 const parseWeatherData = (data) => {
   const main = data.main;
   const temperature = main && {
-    F: `${Math.round(main.temp)}°F`,
-    C: `${Math.round(((main.temp - 32) * 5) / 9)}°C`,
+    F: Math.round(main.temp),
+    C: Math.round(((main.temp - 32) * 5) / 9),
   };
   const location = data.name;
   const weather = data.weather[0].id;

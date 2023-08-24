@@ -1,11 +1,14 @@
 import "./Main.css";
 import WeatherCard from "../WeatherCard/WeatherCard";
 import ItemCard from "../ItemCard/ItemCard";
-function Main({ day, type, defaultClothing, temperature, onSelectCard }) {
+import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
+import React, { useContext } from "react";
+function Main({ day, type, defaultClothing, C, F, onSelectCard }) {
+  const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
   const getWeatherType = () => {
-    if (temperature >= 86) {
+    if (F >= 86) {
       return "hot";
-    } else if (temperature >= 66) {
+    } else if (F >= 66) {
       return "warm";
     } else {
       return "cold";
@@ -35,10 +38,11 @@ function Main({ day, type, defaultClothing, temperature, onSelectCard }) {
 
   return (
     <div className="main">
-      <WeatherCard day={day} type={weather} temperature={String(temperature)} />
+      <WeatherCard day={day} type={weather} C={`${C}°C`} F={`${F}°F`} />
       <section className="card-section" id="cardSection">
         <div className="card-section__caption">
-          Today is {temperature} / You may want to wear:
+          Today is {currentTemperatureUnit === "C" ? `${C}°C` : `${F}°F`} / You
+          may want to wear:
         </div>
         <div className="card-section__gallery">
           {filteredCards.map((item) => {

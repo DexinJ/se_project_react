@@ -17,7 +17,7 @@ import { addItem, deleteItem, getItems } from "../../utils/api";
 function App() {
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
-  const [temp, setTemp] = useState(0);
+  const [temp, setTemp] = useState({});
   const [weather, setWeather] = useState(0);
   const [day, setDay] = useState(true);
   const [location, setLocation] = useState("");
@@ -116,7 +116,8 @@ function App() {
               day={day}
               type={weather}
               defaultClothing={clothingItems}
-              temperature={currentTemperatureUnit === "C" ? temp.C : temp.F}
+              C={temp.C}
+              F={temp.F}
               onSelectCard={handleSelectedCard}
             />
           </Route>
