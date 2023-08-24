@@ -57,16 +57,18 @@ function App() {
 
   const handleCardDelete = () => {
     deleteItem(selectedCard.id)
-      .then((data) => {
-        console.log(data);
-        getItems()
-          .then((data) => {
-            setClothingItems(data);
-            handleCloseModal();
-          })
-          .catch((err) => {
-            console.error(err);
-          });
+      .then((/*returns an empty object*/) => {
+        // getItems()
+        //   .then((data) => {
+        //     setClothingItems(data);
+        //   })
+        //   .catch((err) => {
+        //     console.error(err);
+        //   });
+        let temp = clothingItems.slice();
+        temp.splice(temp.indexOf(selectedCard), 1);
+        setClothingItems(temp);
+        handleCloseModal();
       })
       .catch((err) => {
         console.error(err);
