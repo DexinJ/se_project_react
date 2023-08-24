@@ -1,5 +1,5 @@
 import "./Profile.css";
-import ClothSection from "../ClothSection/ClothSection";
+import ClothSection from "../ClothesSection/ClothesSection";
 import SideBar from "../SideBar/SideBar";
 function Profile({ onClick, defaultClothing, onSelectCard }) {
   return (
