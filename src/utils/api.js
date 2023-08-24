@@ -1,5 +1,5 @@
 import { baseUrl } from "./constants";
-
+import { processServerResopnse } from "./utils";
 const getItems = () => {
   return fetch(`${baseUrl}/items`).then(processServerResopnse);
 };
@@ -27,11 +27,4 @@ const deleteItem = (id) => {
   }).then(processServerResopnse);
 };
 
-const processServerResopnse = (res) => {
-  if (res.ok) {
-    return res.json();
-  } else {
-    return Promise.reject(`Error: ${res.status}`);
-  }
-};
 export { getItems, addItem, deleteItem };

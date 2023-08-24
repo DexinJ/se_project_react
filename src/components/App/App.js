@@ -38,11 +38,7 @@ function App() {
   };
 
   const handleToggleSwitchChange = () => {
-    if (currentTemperatureUnit === "C") {
-      setCurrentTemperatureUnit("F");
-    } else {
-      setCurrentTemperatureUnit("C");
-    }
+    setCurrentTemperatureUnit(currentTemperatureUnit === "C" ? "F" : "C");
   };
 
   const handleAddFormSubmit = (item) => {
@@ -61,10 +57,12 @@ function App() {
 
   const handleCardDelete = () => {
     deleteItem(selectedCard._id)
-      .then(() => {
+      .then((data) => {
+        console.log(data);
         getItems()
           .then((data) => {
             setClothingItems(data);
+            handleCloseModal();
           })
           .catch((err) => {
             console.error(err);

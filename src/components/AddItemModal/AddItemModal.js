@@ -6,11 +6,21 @@ function AddItemModal({ onClose, onAdd }) {
   const [name, setName] = useState("");
   const [url, setUrl] = useState("");
   const [weather, setWeather] = useState("");
-  function handleSubmit(e) {
-    e.preventDefault();
+  function handleSubmit() {
     onAdd({ name: name, url: url, weather: weather });
-    onClose();
   }
+
+  const handleChangeName = (e) => {
+    setName(e.target.value);
+  };
+
+  const handleChangeUrl = (e) => {
+    setUrl(e.target.value);
+  };
+
+  const handleChangeWeather = (e) => {
+    setWeather(e.target.value);
+  };
   return (
     <div>
       <ModalWithForm
@@ -28,9 +38,7 @@ function AddItemModal({ onClose, onAdd }) {
             maxLength="30"
             className="modal__input modal__text"
             placeholder="Name"
-            onChange={(e) => {
-              setName(e.target.value);
-            }}
+            onChange={handleChangeName}
           />
         </label>
         <label className="modal__field modal__text">
@@ -42,9 +50,7 @@ function AddItemModal({ onClose, onAdd }) {
             maxLength="100"
             className="modal__input modal__text"
             placeholder="Image URL"
-            onChange={(e) => {
-              setUrl(e.target.value);
-            }}
+            onChange={handleChangeUrl}
           />
         </label>
         <div className="modal__text">Select the weather type:</div>
@@ -56,9 +62,7 @@ function AddItemModal({ onClose, onAdd }) {
               value="hot"
               name="weather"
               className="modal__point"
-              onClick={() => {
-                setWeather("hot");
-              }}
+              onClick={handleChangeWeather}
             />
             <label className="modal__select">Hot</label>
           </div>
@@ -69,9 +73,7 @@ function AddItemModal({ onClose, onAdd }) {
               value="warm"
               name="weather"
               className="modal__point"
-              onClick={() => {
-                setWeather("warm");
-              }}
+              onClick={handleChangeWeather}
             />
             <label className="modal__select">Warm</label>
           </div>
@@ -82,9 +84,7 @@ function AddItemModal({ onClose, onAdd }) {
               value="cold"
               name="weather"
               className="modal__point"
-              onClick={() => {
-                setWeather("cold");
-              }}
+              onClick={handleChangeWeather}
             />
             <label className="modal__select">Cold</label>
           </div>

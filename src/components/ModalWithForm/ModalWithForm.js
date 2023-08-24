@@ -7,6 +7,10 @@ function ModalWithForm({
   name,
   onSubmit,
 }) {
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    onSubmit();
+  };
   return (
     <div className={`modal modal_type_${name}`}>
       <div className="modal__container">
@@ -14,7 +18,7 @@ function ModalWithForm({
           <img src="/images/Close.svg" alt="close modal" />
         </button>
         <h3 className="modal__text modal__heading">{title}</h3>
-        <form onSubmit={onSubmit} className="modal__form">
+        <form onSubmit={handleFormSubmit} className="modal__form">
           {children}
           <button className="modal__button modal__text" type="submit">
             {buttonText}
