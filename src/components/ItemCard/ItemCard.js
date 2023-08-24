@@ -6,7 +6,7 @@ function ItemCard({ item, onClick }) {
   return (
     <div className="item">
       <img
-        src={item.link}
+        src={item.imageUrl}
         className="item__image"
         alt={item.name}
         onClick={handleImageClick}

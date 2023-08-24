@@ -1,0 +1,55 @@
+.profile {
+  display: flex;
+  padding: 15px 40px 0;
+  flex-grow: 1;
+  justify-content: space-between;
+}
+
+.profile__card-top {
+  display: flex;
+  gap: 20px;
+}
+
+.profile__button {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  opacity: 0.6;
+  font-family: "CabinetGrotesk-Bold";
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.profile__user {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  text-decoration: none;
+  color: black;
+  align-self: flex-start;
+}
+
+.profile__name {
+  font-family: "CabinetGrotesk-Bold";
+  font-size: 20px;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.profile__card-section {
+  padding-top: 16px;
+}
+
+.profile__icon {
+  width: 56px;
+}
+
+.profile__gallery {
+  margin-top: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1015px;
+  gap: 20px;
+}

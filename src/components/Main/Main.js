@@ -35,14 +35,10 @@ function Main({ day, type, defaultClothing, temperature, onSelectCard }) {
 
   return (
     <div className="main">
-      <WeatherCard
-        day={day}
-        type={weather}
-        temperature={String(temperature) + "°F"}
-      />
+      <WeatherCard day={day} type={weather} temperature={String(temperature)} />
       <section className="card-section" id="cardSection">
         <div className="card-section__caption">
-          Today is {temperature}°F / You may want to wear:
+          Today is {temperature} / You may want to wear:
         </div>
         <div className="card-section__gallery">
           {filteredCards.map((item) => {

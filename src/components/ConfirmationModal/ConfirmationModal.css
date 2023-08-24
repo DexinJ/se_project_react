@@ -1,0 +1,34 @@
+.modal__confirm-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background-color: white;
+  padding: 60px;
+  border-radius: 20px;
+  max-width: 550px;
+  width: 100%;
+}
+
+.modal__confirm-gap-40 {
+  margin: 40px 0 0;
+}
+
+.modal__confirm-gap-24 {
+  margin: 24px 0 0;
+}
+
+.modal__confirm-button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.modal__orange {
+  color: #ff4d00;
+}
+
+.modal__confirm-button:hover {
+  opacity: 0.6;
+  transition: opacity linear 0.1s;
+}

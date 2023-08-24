@@ -1,10 +1,9 @@
 import { latitude, longitude, APIkey } from "./constants";
 
 const getForecastWeather = () => {
-  const weatherApi = fetch(
+  return fetch(
     `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${APIkey}`
   ).then(processServerResopnse);
-  return weatherApi;
 };
 
 const processServerResopnse = (res) => {
@@ -17,7 +16,10 @@ const processServerResopnse = (res) => {
 
 const parseWeatherData = (data) => {
   const main = data.main;
-  const temperature = main && Math.ceil(main.temp);
+  const temperature = main && {
+    F: `${Math.round(main.temp)}°F`,
+    C: `${Math.round(((main.temp - 32) * 5) / 9)}°C`,
+  };
   const location = data.name;
   const weather = data.weather[0].id;
   const currentTime = Date.now() / 1000;

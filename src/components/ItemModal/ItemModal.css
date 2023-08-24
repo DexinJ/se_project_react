@@ -18,6 +18,8 @@
 
 .modal__picture-title {
   margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .modal__picture-text {

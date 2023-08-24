@@ -1,5 +1,5 @@
 import "./ItemModal.css";
-function ItemModal({ content, onClose }) {
+function ItemModal({ content, onClose, onDelete }) {
   return (
     <div className={`modal`}>
       <div className="modal__image-container">
@@ -10,9 +10,20 @@ function ItemModal({ content, onClose }) {
         >
           <img src="/images/Close.svg" alt="close modal" />
         </button>
-        <img src={content.link} alt={content.name} className="modal__image" />
-        <div className=" modal__picture-title modal__picture-text">
-          {content.name}
+        <img
+          src={content.imageUrl}
+          alt={content.name}
+          className="modal__image"
+        />
+        <div className=" modal__picture-title">
+          <div className="modal__picture-text">{content.name}</div>
+          <button
+            type="click"
+            className="modal__picture-text modal__confirm-button modal__orange"
+            onClick={onDelete}
+          >
+            Delete Item
+          </button>
         </div>
         <div className="modal__picture-text modal__picture-small-text ">
           Weather: {content.weather}
