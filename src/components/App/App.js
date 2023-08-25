@@ -1,3 +1,4 @@
+//Limits to my Json Server: Changes are faked and aren't persisted
 import "./App.css";
 import "../../vendor/fonts.css";
 import Header from "../Header/Header";
@@ -45,6 +46,7 @@ function App() {
     addItem(item)
       .then((data) => {
         setClothingItems([data, ...clothingItems]);
+        handleCloseModal();
       })
       .catch((err) => {
         console.error(err);
@@ -57,7 +59,7 @@ function App() {
 
   const handleCardDelete = () => {
     deleteItem(selectedCard.id)
-      .then((/*returns an empty object*/) => {
+      .then(() => {
         // getItems()
         //   .then((data) => {
         //     setClothingItems(data);
@@ -65,9 +67,9 @@ function App() {
         //   .catch((err) => {
         //     console.error(err);
         //   });
-        let temp = clothingItems.slice();
-        temp.splice(temp.indexOf(selectedCard), 1);
-        setClothingItems(temp);
+        setClothingItems((clothingItems) =>
+          clothingItems.filter((item) => item.id !== selectedCard.id)
+        );
         handleCloseModal();
       })
       .catch((err) => {
