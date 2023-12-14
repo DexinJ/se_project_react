@@ -1,11 +1,16 @@
 import { Link } from "react-router-dom/cjs/react-router-dom";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import "./Header.css";
-function Header({ onClick, location }) {
+import { useContext } from "react";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+function Header({ onClick, location, isLoggedIn, openLogin, openRegister }) {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
   });
+  const currentUser = useContext(CurrentUserContext);
+  const avatar = currentUser ? currentUser.avatar : "";
+  const name = currentUser ? currentUser.name : null;
   return (
     <div className="header">
       <div className="header__logo">
@@ -18,20 +23,51 @@ function Header({ onClick, location }) {
           {currentDate}, {location}
         </p>
       </div>
-      <div className="header__avatar-logo">
-        <ToggleSwitch />
-        <div>
-          <button className="header__button" type="text" onClick={onClick}>
-            + Add clothes
-          </button>
-        </div>
-        <Link to="/profile" className="header__name">
-          <p className="page__text">Terrence Tegegne</p>
+      {isLoggedIn ? (
+        <div className="header__avatar-logo">
+          <ToggleSwitch />
+
           <div>
-            <img src="/images/Avatar.svg" alt="avatar" />
+            <button className="header__button" type="text" onClick={onClick}>
+              + Add clothes
+            </button>
           </div>
-        </Link>
-      </div>
+          <Link to="/profile" className="header__name">
+            <p className="page__text">{name}</p>
+            <div className="header__avatar-container">
+              {avatar ? (
+                <img
+                  src={avatar}
+                  alt="avatar"
+                  className="header__avatar-image"
+                />
+              ) : (
+                <p className="header__avatar-letter">
+                  {name[0]?.toUpperCase()}
+                </p>
+              )}
+            </div>
+          </Link>
+        </div>
+      ) : (
+        <div className="header__avatar-logo">
+          <ToggleSwitch />
+          <div>
+            <button
+              className="header__button"
+              type="text"
+              onClick={openRegister}
+            >
+              Sign Up
+            </button>
+          </div>
+          <div>
+            <button className="header__button" type="text" onClick={openLogin}>
+              Log In
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

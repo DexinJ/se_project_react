@@ -1,7 +1,21 @@
+import { useContext } from "react";
 import "./ItemCard.css";
-function ItemCard({ item, onClick }) {
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+function ItemCard({ item, onClick, onLike }) {
+  console.log(item);
+  const currentUser = useContext(CurrentUserContext);
+  const userId = currentUser ? currentUser._id : "";
+  const isLiked = item.likes.some((id) => id === userId);
+  const likeButtonClass = isLiked
+    ? "item__button_liked"
+    : "item__button_default";
+
   const handleImageClick = () => {
     onClick(item);
+  };
+
+  const handleLikeClick = () => {
+    onLike({ id: item._id, isLiked: isLiked });
   };
   return (
     <div className="item">
@@ -11,7 +25,14 @@ function ItemCard({ item, onClick }) {
         alt={item.name}
         onClick={handleImageClick}
       />
-      <div className="item__info">{item.name}</div>
+      <div className="item__title">
+        <div className="item__info">{item.name}</div>
+        <button
+          className={`item__button ${likeButtonClass}`}
+          type="button"
+          onClick={handleLikeClick}
+        />
+      </div>
     </div>
   );
 }

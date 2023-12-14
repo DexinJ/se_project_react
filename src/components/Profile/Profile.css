@@ -29,6 +29,7 @@
   text-decoration: none;
   color: black;
   align-self: flex-start;
+  padding-bottom: 16px;
 }
 
 .profile__name {
@@ -44,6 +45,7 @@
 
 .profile__icon {
   width: 56px;
+  border-radius: 50%;
 }
 
 .profile__gallery {

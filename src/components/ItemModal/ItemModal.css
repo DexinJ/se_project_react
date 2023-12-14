@@ -31,3 +31,7 @@
 .modal__picture-small-text {
   margin-top: 12px;
 }
+
+.modal__button_hidden {
+  visibility: hidden;
+}

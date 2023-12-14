@@ -54,7 +54,6 @@
 }
 
 .modal__button {
-  margin: 32px 0 0;
   border: none;
   background-color: #000;
   color: #fff;
@@ -71,6 +70,19 @@
 .modal__button_disabled {
   opacity: 0.3;
   cursor: default;
+}
+
+.modal__second-button {
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-size: 16px;
+  background-color: #fff;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.5);
+  border-color: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-width: 0;
+  border-radius: 4px;
 }
 
 .modal__form {
@@ -107,4 +119,10 @@
 
 .modal__select {
   padding-left: 11px;
+}
+
+.modal__button-div{
+  display: flex;
+  flex-direction: row;
+  margin: 32px 0 0;
 }

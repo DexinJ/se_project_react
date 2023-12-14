@@ -3,7 +3,7 @@ import WeatherCard from "../WeatherCard/WeatherCard";
 import ItemCard from "../ItemCard/ItemCard";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 import React, { useContext } from "react";
-function Main({ day, type, defaultClothing, C, F, onSelectCard }) {
+function Main({ day, type, defaultClothing, C, F, onSelectCard, onLikeCard }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
   const getWeatherType = () => {
     if (F >= 86) {
@@ -31,7 +31,6 @@ function Main({ day, type, defaultClothing, C, F, onSelectCard }) {
   };
   const weatherType = getWeatherType();
   const weather = getWeather();
-
   const filteredCards = defaultClothing.filter((item) => {
     return item.weather.toLowerCase() === weatherType;
   });
@@ -47,7 +46,12 @@ function Main({ day, type, defaultClothing, C, F, onSelectCard }) {
         <div className="card-section__gallery">
           {filteredCards.map((item) => {
             return (
-              <ItemCard item={item} onClick={onSelectCard} key={item.id} />
+              <ItemCard
+                item={item}
+                onClick={onSelectCard}
+                key={item._id}
+                onLike={onLikeCard}
+              />
             );
           })}
         </div>

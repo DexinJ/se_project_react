@@ -1,5 +1,13 @@
 import "./ItemModal.css";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import { useContext } from "react";
 function ItemModal({ content, onClose, onDelete }) {
+  const currentUser = useContext(CurrentUserContext);
+  console.log(content);
+  const isOwn = content.owner === currentUser._id;
+  const deleteButtonClass = isOwn
+    ? "modal__picture-text modal__confirm-button modal__orange"
+    : "modal__button_hidden";
   return (
     <div className={`modal`}>
       <div className="modal__image-container">
@@ -17,11 +25,7 @@ function ItemModal({ content, onClose, onDelete }) {
         />
         <div className=" modal__picture-title">
           <div className="modal__picture-text">{content.name}</div>
-          <button
-            type="click"
-            className="modal__picture-text modal__confirm-button modal__orange"
-            onClick={onDelete}
-          >
+          <button type="click" className={deleteButtonClass} onClick={onDelete}>
             Delete Item
           </button>
         </div>
