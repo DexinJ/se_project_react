@@ -16,7 +16,7 @@ function ItemModal({ content, onClose, onDelete }) {
           onClick={onClose}
           className="modal__close modal__white"
         >
-          <img src="/images/Close.svg" alt="close modal" />
+          <img src="/images/Close.svg" alt="close modal button" />
         </button>
         <img
           src={content.imageUrl}

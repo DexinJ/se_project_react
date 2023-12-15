@@ -22,75 +22,81 @@ function AddItemModal({ onClose, onAdd }) {
     setWeather(e.target.value);
   };
   return (
-    <div>
-      <ModalWithForm
-        title="New Garment"
-        onClose={onClose}
-        buttonText="Add garment"
-        onSubmit={handleSubmit}
-      >
-        <label className="modal__field modal__text">
-          Name
+    <ModalWithForm
+      title="New Garment"
+      onClose={onClose}
+      buttonText="Add garment"
+      onSubmit={handleSubmit}
+    >
+      <label className="modal__field modal__text">
+        Name
+        <input
+          type="text"
+          name="name"
+          minLength="1"
+          maxLength="30"
+          className="modal__input modal__text"
+          placeholder="Name"
+          value=""
+          onChange={handleChangeName}
+        />
+      </label>
+      <label className="modal__field modal__text">
+        Image
+        <input
+          type="url"
+          name="link"
+          minLength="1"
+          maxLength="100"
+          className="modal__input modal__text"
+          placeholder="Image URL"
+          value=""
+          onChange={handleChangeUrl}
+        />
+      </label>
+      <div className="modal__text">Select the weather type:</div>
+      <div>
+        <div className="modal__choice modal__text">
           <input
-            type="text"
-            name="name"
-            minLength="1"
-            maxLength="30"
-            className="modal__input modal__text"
-            placeholder="Name"
-            onChange={handleChangeName}
+            type="radio"
+            id="hot"
+            value="hot"
+            name="weather"
+            className="modal__point"
+            onClick={handleChangeWeather}
           />
-        </label>
-        <label className="modal__field modal__text">
-          Image
-          <input
-            type="url"
-            name="link"
-            minLength="1"
-            maxLength="100"
-            className="modal__input modal__text"
-            placeholder="Image URL"
-            onChange={handleChangeUrl}
-          />
-        </label>
-        <div className="modal__text">Select the weather type:</div>
-        <div>
-          <div className="modal__choice modal__text">
-            <input
-              type="radio"
-              id="hot"
-              value="hot"
-              name="weather"
-              className="modal__point"
-              onClick={handleChangeWeather}
-            />
-            <label className="modal__select">Hot</label>
-          </div>
-          <div className="modal__choice modal__text">
-            <input
-              type="radio"
-              id="warm"
-              value="warm"
-              name="weather"
-              className="modal__point"
-              onClick={handleChangeWeather}
-            />
-            <label className="modal__select">Warm</label>
-          </div>
-          <div className="modal__choice modal__text">
-            <input
-              type="radio"
-              id="cold"
-              value="cold"
-              name="weather"
-              className="modal__point"
-              onClick={handleChangeWeather}
-            />
-            <label className="modal__select">Cold</label>
-          </div>
+          <label className="modal__select" for="hot">
+            Hot
+          </label>
         </div>
-      </ModalWithForm>
-    </div>
+        <div className="modal__choice modal__text">
+          <input
+            type="radio"
+            id="warm"
+            value="warm"
+            name="weather"
+            className="modal__point"
+            onClick={handleChangeWeather}
+          />
+          <label className="modal__select" for="warm">
+            Warm
+          </label>
+        </div>
+        <div className="modal__choice modal__text">
+          <input
+            type="radio"
+            id="cold"
+            value="cold"
+            name="weather"
+            className="modal__point"
+            onClick={handleChangeWeather}
+          />
+          <label className="modal__select" for="cold">
+            Cold
+          </label>
+        </div>
+      </div>
+    </ModalWithForm>
   );
 }
 

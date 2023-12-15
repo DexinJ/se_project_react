@@ -36,7 +36,7 @@ function Main({ day, type, defaultClothing, C, F, onSelectCard, onLikeCard }) {
   });
 
   return (
-    <div className="main">
+    <main className="main">
       <WeatherCard day={day} type={weather} C={`${C}°C`} F={`${F}°F`} />
       <section className="card-section" id="cardSection">
         <div className="card-section__caption">
@@ -56,7 +56,7 @@ function Main({ day, type, defaultClothing, C, F, onSelectCard, onLikeCard }) {
           })}
         </div>
       </section>
-    </div>
+    </main>
   );
 }
 

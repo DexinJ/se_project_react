@@ -30,6 +30,7 @@ function LoginModal({ onClose, onSubmit, onRedirect }) {
           type="email"
           placeholder="Email"
           required
+          value=""
           onChange={handleEmailChange}
         />
       </label>
@@ -43,6 +44,7 @@ function LoginModal({ onClose, onSubmit, onRedirect }) {
           maxLength="8"
           placeholder="Password"
           required
+          value=""
           onChange={handlePasswordChange}
         />
       </label>

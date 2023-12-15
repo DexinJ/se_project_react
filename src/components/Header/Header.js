@@ -12,7 +12,7 @@ function Header({ onClick, location, isLoggedIn, openLogin, openRegister }) {
   const avatar = currentUser ? currentUser.avatar : "";
   const name = currentUser ? currentUser.name : null;
   return (
-    <div className="header">
+    <header className="header">
       <div className="header__logo">
         <div>
           <Link to="/">
@@ -38,7 +38,7 @@ function Header({ onClick, location, isLoggedIn, openLogin, openRegister }) {
               {avatar ? (
                 <img
                   src={avatar}
-                  alt="avatar"
+                  alt={`avatar of ${name}`}
                   className="header__avatar-image"
                 />
               ) : (
@@ -68,7 +68,7 @@ function Header({ onClick, location, isLoggedIn, openLogin, openRegister }) {
           </div>
         </div>
       )}
-    </div>
+    </header>
   );
 }
 

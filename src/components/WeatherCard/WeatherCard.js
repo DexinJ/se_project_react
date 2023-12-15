@@ -16,7 +16,11 @@ function WeatherCard({ day = true, type = "sunny", C, F }) {
         {currentTemperatureUnit === "C" ? C : F}
       </div>
       <div>
-        <img src={imageSrcUrl} className="weather__image" />
+        <img
+          src={imageSrcUrl}
+          className="weather__image"
+          alt={`${type} ${day ? "day" : "night"}`}
+        />
       </div>
     </div>
   );

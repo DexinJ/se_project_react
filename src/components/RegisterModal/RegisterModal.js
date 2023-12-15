@@ -34,6 +34,7 @@ function RegisterModal({ onClose, onSubmit, onRedirect }) {
           type="email"
           placeholder="Email"
           required
+          value=""
           onChange={handleEmailChange}
         />
       </label>
@@ -47,6 +48,7 @@ function RegisterModal({ onClose, onSubmit, onRedirect }) {
           maxLength="8"
           placeholder="Password"
           required
+          value=""
           onChange={handlePasswordChange}
         />
       </label>
@@ -60,6 +62,7 @@ function RegisterModal({ onClose, onSubmit, onRedirect }) {
           maxLength="30"
           placeholder="Name"
           required
+          value=""
           onChange={handleNameChange}
         />
       </label>
@@ -71,6 +74,7 @@ function RegisterModal({ onClose, onSubmit, onRedirect }) {
           type="url"
           placeholder="Avatar URL"
           required
+          value=""
           onChange={handleAvatarChange}
         />
       </label>

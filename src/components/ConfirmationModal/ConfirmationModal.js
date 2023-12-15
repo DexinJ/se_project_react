@@ -4,13 +4,12 @@ import "./ConfirmationModal.css";
 function ConfirmationModal({ onClose, onConfirm }) {
   const handleDelete = () => {
     onConfirm();
-    onClose();
   };
   return (
     <div className={`modal`}>
       <div className="modal__confirm-container">
         <button type="button" onClick={onClose} className="modal__close">
-          <img src="/images/Close.svg" alt="close modal" />
+          <img src="/images/Close.svg" alt="close modal button" />
         </button>
         <span className="modal__picture-text">
           Are you sure you want to delete this item?
