@@ -1,15 +1,11 @@
-import React, { useState } from "react";
+import { useForm } from "../../hooks/useForm";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
 function LoginModal({ onClose, onSubmit, onRedirect }) {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  const handleEmailChange = (e) => setEmail(e.target.value);
-  const handlePasswordChange = (e) => setPassword(e.target.value);
+  const { values, handleChange } = useForm({});
 
   const handleSubmit = () => {
-    onSubmit({ email: email, password: password });
+    onSubmit({ email: values.email, password: values.password });
   };
 
   return (
@@ -30,8 +26,8 @@ function LoginModal({ onClose, onSubmit, onRedirect }) {
           type="email"
           placeholder="Email"
           required
-          value=""
-          onChange={handleEmailChange}
+          value={values.email}
+          onChange={handleChange}
         />
       </label>
       <label className="modal__field modal__text">
@@ -44,8 +40,8 @@ function LoginModal({ onClose, onSubmit, onRedirect }) {
           maxLength="8"
           placeholder="Password"
           required
-          value=""
-          onChange={handlePasswordChange}
+          value={values.password}
+          onChange={handleChange}
         />
       </label>
     </ModalWithForm>

@@ -9,6 +9,7 @@ function ModalWithForm({
   secondButton,
   secondButtonText,
   secondButtonLink,
+  isLoading,
 }) {
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -25,7 +26,11 @@ function ModalWithForm({
           {children}
           <div className="modal__button-div">
             <button className="modal__button modal__text" type="submit">
-              {buttonText}
+              {isLoading ? (
+                <div className="modal__button-loading" />
+              ) : (
+                buttonText
+              )}
             </button>
             {secondButton && (
               <button

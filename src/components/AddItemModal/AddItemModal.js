@@ -1,32 +1,20 @@
 import React from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import { useState } from "react";
+import { useForm } from "../../hooks/useForm";
 
-function AddItemModal({ onClose, onAdd }) {
-  const [name, setName] = useState("");
-  const [url, setUrl] = useState("");
-  const [weather, setWeather] = useState("");
+function AddItemModal({ onClose, onAdd, isLoading }) {
+  const { values, handleChange } = useForm({});
   function handleSubmit() {
-    onAdd({ name: name, url: url, weather: weather });
+    onAdd({ name: values.name, url: values.link, weather: values.weather });
   }
 
-  const handleChangeName = (e) => {
-    setName(e.target.value);
-  };
-
-  const handleChangeUrl = (e) => {
-    setUrl(e.target.value);
-  };
-
-  const handleChangeWeather = (e) => {
-    setWeather(e.target.value);
-  };
   return (
     <ModalWithForm
       title="New Garment"
       onClose={onClose}
       buttonText="Add garment"
       onSubmit={handleSubmit}
+      isLoading={isLoading}
     >
       <label className="modal__field modal__text">
         Name
@@ -37,8 +25,9 @@ function AddItemModal({ onClose, onAdd }) {
           maxLength="30"
           className="modal__input modal__text"
           placeholder="Name"
-          value=""
-          onChange={handleChangeName}
+          required
+          value={values.name}
+          onChange={handleChange}
         />
       </label>
       <label className="modal__field modal__text">
@@ -50,8 +39,9 @@ function AddItemModal({ onClose, onAdd }) {
           maxLength="100"
           className="modal__input modal__text"
           placeholder="Image URL"
-          value=""
-          onChange={handleChangeUrl}
+          required
+          value={values.link}
+          onChange={handleChange}
         />
       </label>
       <div className="modal__text">Select the weather type:</div>
@@ -63,9 +53,10 @@ function AddItemModal({ onClose, onAdd }) {
             value="hot"
             name="weather"
             className="modal__point"
-            onClick={handleChangeWeather}
+            required
+            onClick={handleChange}
           />
-          <label className="modal__select" for="hot">
+          <label className="modal__select" htmlFor="hot">
             Hot
           </label>
         </div>
@@ -76,9 +67,9 @@ function AddItemModal({ onClose, onAdd }) {
             value="warm"
             name="weather"
             className="modal__point"
-            onClick={handleChangeWeather}
+            onClick={handleChange}
           />
-          <label className="modal__select" for="warm">
+          <label className="modal__select" htmlFor="warm">
             Warm
           </label>
         </div>
@@ -89,9 +80,9 @@ function AddItemModal({ onClose, onAdd }) {
             value="cold"
             name="weather"
             className="modal__point"
-            onClick={handleChangeWeather}
+            onClick={handleChange}
           />
-          <label className="modal__select" for="cold">
+          <label className="modal__select" htmlFor="cold">
             Cold
           </label>
         </div>

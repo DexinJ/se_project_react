@@ -3,7 +3,6 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { useContext } from "react";
 function ItemModal({ content, onClose, onDelete }) {
   const currentUser = useContext(CurrentUserContext);
-  console.log(content);
   const isOwn = content.owner === currentUser._id;
   const deleteButtonClass = isOwn
     ? "modal__picture-text modal__confirm-button modal__orange"

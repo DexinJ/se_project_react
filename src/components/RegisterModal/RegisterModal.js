@@ -1,19 +1,16 @@
-import React, { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
+import { useForm } from "../../hooks/useForm";
 
 function RegisterModal({ onClose, onSubmit, onRedirect }) {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
-  const [avatar, setAvatar] = useState("");
-
-  const handleEmailChange = (e) => setEmail(e.target.value);
-  const handlePasswordChange = (e) => setPassword(e.target.value);
-  const handleNameChange = (e) => setName(e.target.value);
-  const handleAvatarChange = (e) => setAvatar(e.target.value);
+  const { values, handleChange } = useForm({});
 
   const handleSubmit = () => {
-    onSubmit({ email, password, name, avatar });
+    onSubmit({
+      email: values.email,
+      password: values.password,
+      name: values.name,
+      avatar: values.avatar,
+    });
   };
 
   return (
@@ -34,8 +31,8 @@ function RegisterModal({ onClose, onSubmit, onRedirect }) {
           type="email"
           placeholder="Email"
           required
-          value=""
-          onChange={handleEmailChange}
+          value={values.email}
+          onChange={handleChange}
         />
       </label>
       <label className="modal__field modal__text">
@@ -48,8 +45,8 @@ function RegisterModal({ onClose, onSubmit, onRedirect }) {
           maxLength="8"
           placeholder="Password"
           required
-          value=""
-          onChange={handlePasswordChange}
+          value={values.password}
+          onChange={handleChange}
         />
       </label>
       <label className="modal__field modal__text">
@@ -62,8 +59,8 @@ function RegisterModal({ onClose, onSubmit, onRedirect }) {
           maxLength="30"
           placeholder="Name"
           required
-          value=""
-          onChange={handleNameChange}
+          value={values.name}
+          onChange={handleChange}
         />
       </label>
       <label className="modal__field modal__text">
@@ -74,8 +71,8 @@ function RegisterModal({ onClose, onSubmit, onRedirect }) {
           type="url"
           placeholder="Avatar URL"
           required
-          value=""
-          onChange={handleAvatarChange}
+          value={values.avatar}
+          onChange={handleChange}
         />
       </label>
     </ModalWithForm>

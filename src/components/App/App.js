@@ -40,6 +40,7 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
   const [token, setToken] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleActiveModal = (ident) => {
     setActiveModal(ident);
@@ -51,7 +52,6 @@ function App() {
 
   const handleSelectedCard = (card) => {
     setSelectedCard(card);
-    console.log(selectedCard);
     handleActiveModal("preview");
   };
 
@@ -60,6 +60,7 @@ function App() {
   };
 
   const handleAddFormSubmit = (item) => {
+    setIsLoading(true);
     addItem(item)
       .then((data) => {
         setClothingItems([...clothingItems, data]);
@@ -67,16 +68,16 @@ function App() {
       })
       .catch((err) => {
         console.error(err);
-      });
+      })
+      .finally(() => setIsLoading(false));
   };
 
   const handleDeleteConfirm = () => {
-    console.log(selectedCard);
     handleActiveModal("confirm");
   };
 
   const handleCardDelete = () => {
-    console.log(clothingItems);
+    setIsLoading(true);
     deleteItem(selectedCard._id)
       .then(() => {
         setClothingItems((clothingItems) =>
@@ -86,23 +87,26 @@ function App() {
       })
       .catch((err) => {
         console.error(err);
-      });
+      })
+      .finally(() => setIsLoading(false));
   };
 
   const handleSignIn = ({ email, password }) => {
+    setIsLoading(true);
     signin({ email, password })
       .then((res) => {
-        console.log(res);
         localStorage.setItem("jwt", res.token);
         setToken(localStorage.getItem("jwt"));
         setCurrentUser(res);
         setIsLoggedIn(true);
       })
       .then(() => handleCloseModal())
-      .catch((err) => console.error(err));
+      .catch((err) => console.error(err))
+      .finally(() => setIsLoading(false));
   };
 
   const handleRegister = ({ email, password, name, avatar }) => {
+    setIsLoading(true);
     signup({ email, password, name, avatar })
       .then((res) => {
         setCurrentUser(res);
@@ -110,7 +114,8 @@ function App() {
         setIsLoggedIn(true);
       })
       .then(() => handleCloseModal())
-      .catch((err) => console.error(err));
+      .catch((err) => console.error(err))
+      .finally(() => setIsLoading(false));
   };
 
   const handleLogOut = () => {
@@ -120,13 +125,14 @@ function App() {
   };
 
   const handleEditProfile = ({ name, avatar }) => {
+    setIsLoading(true);
     editProfile({ name, avatar })
       .then((res) => {
-        console.log(res);
         setCurrentUser(res);
       })
       .then(() => handleCloseModal())
-      .catch((err) => console.error(err));
+      .catch((err) => console.error(err))
+      .finally(() => setIsLoading(false));
   };
 
   const handleCardLike = ({ id, isLiked }) => {
@@ -137,14 +143,14 @@ function App() {
               cards.map((c) => (c._id === id ? updatedCard : c))
             );
           })
-          .catch((err) => console.log(err))
+          .catch((err) => console.error(err))
       : addLike(id)
           .then((updatedCard) => {
             setClothingItems((cards) =>
               cards.map((c) => (c._id === id ? updatedCard : c))
             );
           })
-          .catch((err) => console.log(err));
+          .catch((err) => console.error(err));
   };
 
   useEffect(() => {
@@ -164,7 +170,6 @@ function App() {
   useEffect(() => {
     getItems()
       .then((data) => {
-        console.log(data);
         setClothingItems(Object.values(data)[0]);
       })
       .catch((err) => {
@@ -184,6 +189,22 @@ function App() {
         .catch((err) => console.error("Invalid token: ", err));
     }
   }, [token]);
+
+  useEffect(() => {
+    if (!activeModal) return;
+
+    const handleEscClose = (e) => {
+      if (e.key === "Escape") {
+        handleCloseModal();
+      }
+    };
+
+    document.addEventListener("keydown", handleEscClose);
+
+    return () => {
+      document.removeEventListener("keydown", handleEscClose);
+    };
+  }, [activeModal]);
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -236,6 +257,7 @@ function App() {
             <AddItemModal
               onClose={handleCloseModal}
               onAdd={handleAddFormSubmit}
+              isLoading={isLoading}
             />
           )}
           {activeModal === "preview" && (
