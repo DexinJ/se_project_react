@@ -2,7 +2,7 @@ import { useForm } from "../../hooks/useForm";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
 function LoginModal({ onClose, onSubmit, onRedirect }) {
-  const { values, handleChange } = useForm({});
+  const { values, handleChange } = useForm({ email: "", password: "" });
 
   const handleSubmit = () => {
     onSubmit({ email: values.email, password: values.password });

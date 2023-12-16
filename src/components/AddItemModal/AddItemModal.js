@@ -3,7 +3,7 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useForm } from "../../hooks/useForm";
 
 function AddItemModal({ onClose, onAdd, isLoading }) {
-  const { values, handleChange } = useForm({});
+  const { values, handleChange } = useForm({ name: "", link: "", weather: "" });
   function handleSubmit() {
     onAdd({ name: values.name, url: values.link, weather: values.weather });
   }

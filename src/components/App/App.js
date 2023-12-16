@@ -63,7 +63,7 @@ function App() {
     setIsLoading(true);
     addItem(item)
       .then((data) => {
-        setClothingItems([...clothingItems, data]);
+        setClothingItems([data, ...clothingItems]);
         handleCloseModal();
       })
       .catch((err) => {
@@ -170,7 +170,7 @@ function App() {
   useEffect(() => {
     getItems()
       .then((data) => {
-        setClothingItems(Object.values(data)[0]);
+        setClothingItems(Object.values(data)[0].reverse());
       })
       .catch((err) => {
         console.error(err);
@@ -271,6 +271,7 @@ function App() {
             <ConfirmationModal
               onClose={handleCloseModal}
               onConfirm={handleCardDelete}
+              isLoading={isLoading}
             />
           )}
 

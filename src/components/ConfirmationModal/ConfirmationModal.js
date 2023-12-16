@@ -1,7 +1,7 @@
 import React from "react";
 import "./ConfirmationModal.css";
 
-function ConfirmationModal({ onClose, onConfirm }) {
+function ConfirmationModal({ onClose, onConfirm, isLoading }) {
   const handleDelete = () => {
     onConfirm();
   };
@@ -17,12 +17,13 @@ function ConfirmationModal({ onClose, onConfirm }) {
         <span className="modal__picture-text">
           This action is irreversible.
         </span>
+
         <button
           type="click"
           onClick={handleDelete}
           className="modal__picture-text modal__confirm-button modal__orange modal__confirm-gap-40"
         >
-          Yes, delete item
+          {isLoading ? "Deleting ..." : "Yes, delete item"}
         </button>
         <button
           type="click"

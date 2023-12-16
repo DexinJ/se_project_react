@@ -2,7 +2,12 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useForm } from "../../hooks/useForm";
 
 function RegisterModal({ onClose, onSubmit, onRedirect }) {
-  const { values, handleChange } = useForm({});
+  const { values, handleChange } = useForm({
+    email: "",
+    password: "",
+    name: "",
+    avatar: "",
+  });
 
   const handleSubmit = () => {
     onSubmit({
