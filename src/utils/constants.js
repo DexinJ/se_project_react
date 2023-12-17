@@ -1,7 +1,10 @@
 const latitude = 34.05;
 const longitude = -118.24;
 const APIkey = "791e0eb33eb84e901df9e55dfa0aa052";
-const baseUrl = "http://localhost:3001";
+const baseUrl =
+  process.env.NODE_ENV === "production"
+    ? "https://api.wtwr.indianawx.us"
+    : "http://localhost:3001";
 const defaultClothingItems = [
   // {
   //   _id: 0,
