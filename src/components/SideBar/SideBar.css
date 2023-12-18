@@ -10,3 +10,11 @@
   white-space: nowrap;
   gap: 8px;
 }
+.sidebar__avatar-container {
+  margin: 0;
+  height: 56px;
+  width: 56px;
+  border-radius: 50%;
+  background-color: #672b2b;
+  overflow: hidden;
+}

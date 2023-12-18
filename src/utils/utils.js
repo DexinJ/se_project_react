@@ -1,6 +1,7 @@
 const processServerResopnse = (res) => {
   if (res.ok) {
     return res.json().then((res) => {
+      console.log(res);
       return res;
     });
   } else {

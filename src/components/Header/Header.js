@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom/cjs/react-router-dom";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import "./Header.css";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 function Header({ onClick, location, isLoggedIn, openLogin, openRegister }) {
   const currentDate = new Date().toLocaleString("default", {
@@ -11,6 +11,7 @@ function Header({ onClick, location, isLoggedIn, openLogin, openRegister }) {
   const currentUser = useContext(CurrentUserContext);
   const avatar = currentUser ? currentUser.avatar : "";
   const name = currentUser ? currentUser.name : null;
+
   return (
     <header className="header">
       <div className="header__logo">

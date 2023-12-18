@@ -50,6 +50,10 @@
   width: 40px;
   border-radius: 50%;
   background-color: #672b2b;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+  display: flex;
 }
 
 .header__avatar-image {
