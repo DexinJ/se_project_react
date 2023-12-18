@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom/cjs/react-router-dom";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import "./Header.css";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 function Header({ onClick, location, isLoggedIn, openLogin, openRegister }) {
   const currentDate = new Date().toLocaleString("default", {
