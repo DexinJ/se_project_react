@@ -28,6 +28,7 @@
   height: 325px;
   border-radius: 10px;
   cursor: pointer;
+  object-fit: contain;
 }
 
 .item__button {

@@ -26,11 +26,13 @@ function ItemCard({ item, onClick, onLike }) {
       />
       <div className="item__title">
         <div className="item__info">{item.name}</div>
-        <button
-          className={`item__button ${likeButtonClass}`}
-          type="button"
-          onClick={handleLikeClick}
-        />
+        {userId && (
+          <button
+            className={`item__button ${likeButtonClass}`}
+            type="button"
+            onClick={handleLikeClick}
+          />
+        )}
       </div>
     </div>
   );

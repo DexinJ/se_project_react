@@ -10,6 +10,7 @@
 
 .modal__image {
   margin: -32px 0 0 -32px;
+  max-width: calc(100% + 64px);
 }
 
 .modal__white {
