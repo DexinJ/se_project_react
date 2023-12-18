@@ -8,7 +8,11 @@ import ItemModal from "../ItemModal/ItemModal";
 import LoginModal from "../LoginModal/LoginModal";
 import EditProfileModal from "../EditProfileModal/EditProfileModal";
 import { useEffect, useState } from "react";
-import { getForecastWeather, parseWeatherData } from "../../utils/weatherApi";
+import {
+  getForecastWeather,
+  getUserLocation,
+  parseWeatherData,
+} from "../../utils/weatherApi";
 import { defaultClothingItems } from "../../utils/constants";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 import { Switch, Route } from "react-router-dom/cjs/react-router-dom";
@@ -154,17 +158,19 @@ function App() {
   };
 
   useEffect(() => {
-    getForecastWeather()
-      .then((data) => {
-        const parse = parseWeatherData(data);
-        setTemp(parse.temp);
-        setWeather(parse.weather);
-        setDay(parse.day);
-        setLocation(parse.location);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+    getUserLocation().then((res) => {
+      getForecastWeather(res)
+        .then((data) => {
+          const parse = parseWeatherData(data);
+          setTemp(parse.temp);
+          setWeather(parse.weather);
+          setDay(parse.day);
+          setLocation(parse.location);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    });
   }, []);
 
   useEffect(() => {

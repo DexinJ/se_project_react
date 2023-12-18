@@ -1,6 +1,18 @@
-import { latitude, longitude, APIkey } from "./constants";
+import { APIkey } from "./constants";
 import { processServerResopnse } from "./utils";
-const getForecastWeather = () => {
+
+const getUserLocation = () => {
+  return fetch(
+    "https://api.geoapify.com/v1/ipinfo?apiKey=930719c525a249a38ca8ab246765d5e5"
+  )
+    .then(processServerResopnse)
+    .then((data) => {
+      const { latitude, longitude } = data.location;
+      return { latitude, longitude };
+    });
+};
+
+const getForecastWeather = ({ latitude, longitude }) => {
   return fetch(
     `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${APIkey}`
   ).then(processServerResopnse);
@@ -19,4 +31,4 @@ const parseWeatherData = (data) => {
   return { day: day, temp: temperature, location: location, weather: weather };
 };
 
-export { getForecastWeather, parseWeatherData };
+export { getUserLocation, getForecastWeather, parseWeatherData };
